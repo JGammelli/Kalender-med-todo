@@ -27,7 +27,7 @@ class CalendarDays extends React.Component {
                     })}
                 </ul>
                 <ul>
-                    {listFull !== 0 ? <p> +{listFull} deadlines</p> : null}
+                    {listFull !== 0 ? <p> +{listFull} todos</p> : null}
                 </ul>
             </div>)
         });
