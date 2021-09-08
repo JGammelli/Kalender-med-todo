@@ -1,6 +1,18 @@
 import React from "react";
 
 class CalendarDays extends React.Component {
+
+    state={
+        holidays: []
+    } 
+
+    async componentDidUpdate(){
+        const response = await fetch(`https://sholiday.faboul.se/dagar/v2.1/${this.props.year + "/" + this.props.month}`);
+        const data = await response.json();
+        this.setState({holidays: data.dagar})
+        //console.log(this.state.holidays);
+    }
+
     render(){
         let days = Array.from({length:this.props.days},(_, index) => index + 1);
         let retriveTodo = JSON.parse(localStorage["todos"]);
@@ -10,24 +22,41 @@ class CalendarDays extends React.Component {
             let listFull = 0;
             for(let todo in retriveTodo){
                 if((this.props.year + "-" + this.props.month + "-" + day) === retriveTodo[todo].deadline){
-                    if(todoList.length === 3){
+                    if(todoList.length === 2){
                         listFull++
                     }else{
                         todoList.push(retriveTodo[todo].todo);
                     }
                 }
+            }      
+            
+            let getHolidays = this.state.holidays;
+            let todaysHoliday = [];
+            // let today = day.toString();
+            for(let holiday in getHolidays){
+                // if(today.length === 1){
+                //     today = "0" + day;
+                //     console.log(day);
+                // }
+                if((this.props.year + "-" + this.props.month + "-" + day) === getHolidays[holiday].datum){
+                    todaysHoliday.push(getHolidays[holiday].helgdag)
+                }
             }
-
+            //console.log(day);
+            
             return(
             <div onClick={this.props.handleclick} key={this.props.year + "-" + this.props.month + "-" + day} className="day" id={this.props.year + "-" + this.props.month + "-" + day}>
                 {day}
-                <ul>
+                {todaysHoliday.map((helgdag, index) => {
+                    return <p key={index}>{helgdag}</p>
+                    })}
+                <ul >
                     {todoList.map((todo, index) =>{
-                        return(<li key={index} className="todoList">{todo}</li>)
+                        return(<li key={index} className="todoList" id={this.props.year + "-" + this.props.month + "-" + day}>{todo}</li>)
                     })}
                 </ul>
                 <ul>
-                    {listFull !== 0 ? <p> +{listFull} todos</p> : null}
+                    {listFull !== 0 ? <p id={this.props.year + "-" + this.props.month + "-" + day}> +{listFull} todos</p> : null}
                 </ul>
             </div>)
         });

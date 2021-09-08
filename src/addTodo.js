@@ -1,6 +1,7 @@
 import React from "react";
  
-const AddTodo = props => {
+
+const AddTodo = (props) => {
   return (
     <div className="popup-box">
       <div className="box">

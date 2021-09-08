@@ -5,7 +5,7 @@ class BlankDays extends React.Component {
         let blank = Array.from({length:this.props.weekDay},(_, index) => index + 1);
 
         return(
-            blank.map((blank, index) => <div key={index} className="day empty">BLANK</div>)
+            blank.map((blank, index) => <div key={index} className="day empty"></div>)
         )
     }
 }

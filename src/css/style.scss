@@ -1,3 +1,15 @@
 @import "calendar";
 @import "addTodo";
 @import "todoList";
+@import "buttons";
+
+#root{
+    display: grid;
+    grid-template-columns: repeat(10, 10em);
+    grid-template-rows: repeat(18, 3em);
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+}

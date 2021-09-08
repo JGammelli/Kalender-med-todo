@@ -3,3 +3,9 @@
     width: 10em;
     height: 8em;
 }
+
+.todoList{
+    grid-column-start: 9;
+    grid-column-end: 9;
+    grid-row-start: 3;
+}

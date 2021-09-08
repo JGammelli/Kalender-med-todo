@@ -1,28 +1,50 @@
-
 .day{
     width: 10em;
-    height: 10em;
+    height: 7em;
     background-color: rgba(255, 165, 123, 0.384);
-
+    
 }
-
 .day:hover{
     background-color: rgba(155, 86, 65, 0.5);
-
+}
+.day.empty{
+    background-color: rgb(255, 255, 255);
 }
 .dayContainer{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 70em;
+    height: 42em;
+    grid-column-start: 2;
+    grid-row-start: 4;
+    align-content: flex-start;
+    border: 1px solid black;
 }
-
 .weekDayContainer{
     display: flex;
     flex-direction: row;
+    grid-column-start: 2;
+    grid-column-end: 9;
+    grid-row-start: 3;
+    align-self: end;
 }
 .weekDay{
-    width: 5em;
+    width: 10em;
 }
-
+.monthBox{
+    grid-column-start: 2;
+    grid-row-start: 2;
+    align-self: end;
+}
+.yearBox{
+    grid-column-start: 3;
+    grid-row-start: 1;
+    align-self: end;
+}
+h1{
+    grid-column-start: 2;
+    grid-row-start: 1;
+    align-self: end;
+}
 
