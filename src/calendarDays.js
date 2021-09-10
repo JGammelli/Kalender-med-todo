@@ -10,7 +10,6 @@ class CalendarDays extends React.Component {
         const response = await fetch(`https://sholiday.faboul.se/dagar/v2.1/${this.props.year + "/" + this.props.month}`);
         const data = await response.json();
         this.setState({holidays: data.dagar})
-        //console.log(this.state.holidays);
     }
 
     render(){
@@ -32,17 +31,11 @@ class CalendarDays extends React.Component {
             
             let getHolidays = this.state.holidays;
             let todaysHoliday = [];
-            // let today = day.toString();
             for(let holiday in getHolidays){
-                // if(today.length === 1){
-                //     today = "0" + day;
-                //     console.log(day);
-                // }
                 if((this.props.year + "-" + this.props.month + "-" + day) === getHolidays[holiday].datum){
                     todaysHoliday.push(getHolidays[holiday].helgdag)
                 }
             }
-            //console.log(day);
             
             return(
             <div onClick={this.props.handleclick} key={this.props.year + "-" + this.props.month + "-" + day} className="day" id={this.props.year + "-" + this.props.month + "-" + day}>
@@ -62,10 +55,7 @@ class CalendarDays extends React.Component {
         });
 
         return(
-
             daysInMonth
-
-            
         )
     }
 }
