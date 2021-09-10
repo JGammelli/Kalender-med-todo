@@ -5,8 +5,7 @@ class TodoForm extends React.Component {
     
     render(){
         let retrive = JSON.parse(localStorage["todos"]);
-
-        //Gör ny lista och stoppa in dom i datum ordning!
+        
         retrive.sort(function compare(a, b){
             let deadlineA = new moment(a.deadline);
             let deadlineB = new moment(b.deadline);
